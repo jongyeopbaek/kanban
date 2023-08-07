@@ -11,10 +11,12 @@ import java.io.IOException;
 
 
 /**
- * 작업목록 - /works
- * 작업등록 - /works/add
- * 작업수정 - /works/등록번호
- * 작업삭제 - /works/delete/등록번호
+ 작업관리 컨트롤러
+ - 작업 목록 - /works
+ - 작업 등록 - /works/add
+ - 작업 조회 - /works/작업 번호
+ - 작업 수정 - /works/edit/등록번호
+ - 작업 삭제 - /works/등록번호/delete
  */
 @WebServlet("/works/*")
 public class WorksController extends HttpServlet {
