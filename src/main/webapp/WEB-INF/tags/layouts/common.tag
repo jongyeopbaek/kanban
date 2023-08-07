@@ -2,13 +2,14 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ attribute name="header" fragment="true" %>
 <%@ attribute name="footer" fragment="true" %>
+<%@ attribute name="title" %>
 <c:url var="cssUrl" value="/static/css/" />
 <c:url var="jsUrl" value="/static/js/" />
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>사이트 제목...</title>
+        <title>${title}</title>
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css" />
         <c:if test="${addCss != null}">
         <c:forEach var="file" items="${addCss}">
