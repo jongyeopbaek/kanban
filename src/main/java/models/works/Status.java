@@ -1,4 +1,4 @@
-package models.member.works;
+package models.works;
 
 public enum Status {
     READY,
