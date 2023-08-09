@@ -19,7 +19,7 @@ public class WorksURLRouter implements URLRouter {
 
         String mode = getMode(req.getRequestURI(), location);
         mode = mode == null || mode.isBlank() ? "list" : mode;
-        if(mode.matches("\\d")){ //작업 조회 모드
+        if(mode.matches("\\d*")){ //작업 조회 모드
             mode = "view";
         }
         Controller controller = null;

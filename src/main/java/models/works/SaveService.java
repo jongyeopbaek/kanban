@@ -37,9 +37,9 @@ public class SaveService {
         String workNo = req.getParameter("workNo");
         if (workNo != null && !workNo.isBlank()){
             work.setWorkNo(Long.parseLong(workNo));
-
-            save(work);
         }
+
+        save(work);
     }
 
 }
