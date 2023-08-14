@@ -1,6 +1,6 @@
 package models.works;
 
-import Vaildators.Validator;
+import validators.Validator;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class SaveService {

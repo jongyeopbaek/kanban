@@ -71,4 +71,32 @@
 * 기본 스타일 처리
 * 회원가입 양식 구성하기
 * 회원가입 처리하기
-* 
+
+## 6일차
+* 기본 스타일 처리
+* 메인페이지 로그인 양식
+* 회원가입 양식 구성하기
+* 회원가입 처리하기
+  - 모델 구성
+  - models/member/JoinService.java : 가입
+  - models/member/Users.java
+  - models/member/UsersDao.java
+  - models/member/JoinValidator.java
+
+## 7일차
+
+* 회원가입 처리하기
+* 비밀번호 복잡성처리
+* 휴대폰 유효성 검사 처리
+* 로그인 구현하기
+- 모델 구성
+- models/member/LoginService.java
+- models/member/LoginValidator.java
+* 로그아웃 구현하기
+* 아이디 저장하기 구현하기
+
+## 8일차 
+* 아이디 저장하기 구현하기
+* 페이지 회원인가 구현하기
+* 작업 등록/ 수정시 이미지 에디터 추가 
+* 작업 등록/ 수정시 파일 첨부 추가 

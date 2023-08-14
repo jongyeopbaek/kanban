@@ -1,6 +1,8 @@
 package controllers.works;
 
 import static commons.ScriptUtils.*;
+
+import commons.UrlUtils;
 import commons.ViewUtils;
 import controllers.Controller;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,14 +21,14 @@ public class SaveController implements Controller {
             String mode = URI.indexOf("edit") != -1 ? "edit" : "add";
 
             Work work = null;
-
-            if (mode.equals("edit")) {
+            if (mode.equals("edit")) { // 수정
                 InfoService infoService = WorkServiceManager.getInstance().infoService();
-                 work = infoService.get(getWorkNo(req));
+                long workNo = UrlUtils.getPatternData(req, "edit/(\\d*)");
+                work = infoService.get(workNo);
                 if (work == null) {
                     throw new WorkNotFoundException();
                 }
-            }else {
+            } else { // 추가
                 work = new Work();
             }
 
@@ -36,8 +38,8 @@ public class SaveController implements Controller {
             req.setAttribute("addScript", addScript);
 
             ViewUtils.load(req, resp, "works", mode);
-        }catch (Exception e){
-            alertError(resp, e, -1); // 에러 메세지 alert로 출력 , history.go(-1)
+        } catch (Exception e) {
+            alertError(resp, e, -1); // 에러 메세지 alert로 출력, history.go(-1);
         }
     }
 
@@ -47,29 +49,12 @@ public class SaveController implements Controller {
         try {
             saveService.save(req);
 
+            // 추가, 수정 성공시 목록으로 이동
             go(resp, req.getContextPath() + "/works", "parent");
 
         } catch (Exception e) {
             alertError(resp, e);
             e.printStackTrace();
         }
-
-
     }
-
-
-    private long getWorkNo(HttpServletRequest req){
-        String URI = req.getRequestURI();
-        String pattern = "edit/(\\d*)";
-        Pattern p = Pattern.compile(pattern);
-        Matcher matcher= p.matcher(URI);
-        if(matcher.find()){
-            return Long.parseLong(matcher.group(1));
-
-        }
-
-        return 0L;
-    }
-
-
 }

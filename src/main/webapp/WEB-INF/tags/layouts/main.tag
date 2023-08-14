@@ -1,9 +1,12 @@
 <%@ tag body-content="scriptless" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layouts" %>
 <%@ attribute name="title" %>
+<fmt:setBundle basename="messages.commons" />
 <c:url var="mainUrl" value="/" />
 <c:url var="loginUrl" value="/member/login" />
+<c:url var="logoutUrl" value="/member/logout" />
 <c:url var="joinUrl" value="/member/join" />
 <c:url var="workListUrl" value="/works" />
 
@@ -17,15 +20,28 @@
                 </a>
             </div>
             <div class="right">
-                <a href="${loginUrl}">
-                    <i class="xi-log-in"></i> 로그인
-                </a>
-                <a href="${joinUrl}">
-                    <i class="xi-user-plus"></i> 회원가입
-                </a>
-                <a href="${workListUrl}">
-                    <i class="xi-list"></i> 작업목록
-                </a>
+                <c:if test="${sessionScope.users == null}">
+                    <a href="${loginUrl}">
+                        <i class="xi-log-in"></i> 로그인
+                    </a>
+                    <a href="${joinUrl}">
+                        <i class="xi-user-plus"></i> 회원가입
+                    </a>
+                </c:if>
+                <c:if test="${sessionScope.users != null}">
+                    <span class="userinfo">
+                        <fmt:message key="LOGIN.MESSAGE">
+                            <fmt:param>${sessionScope.users.userNm}</fmt:param>
+                            <fmt:param>${sessionScope.users.userId}</fmt:param>
+                        </fmt:message>
+                    </span>
+                    <a href="${workListUrl}">
+                        <i class="xi-list"></i> 작업목록
+                    </a>
+                    <a href="${logoutUrl}">
+                        <i class="xi-log-out"></i> 로그아웃
+                    </a>
+                </c:if>
             </div>
         </section>
     </jsp:attribute>
