@@ -20,7 +20,7 @@
                 </a>
             </div>
             <div class="right">
-                <c:if test="${sessionScope.users == null}">
+                <c:if test="${!isLogin}">
                     <a href="${loginUrl}">
                         <i class="xi-log-in"></i> 로그인
                     </a>
@@ -28,11 +28,11 @@
                         <i class="xi-user-plus"></i> 회원가입
                     </a>
                 </c:if>
-                <c:if test="${sessionScope.users != null}">
+                <c:if test="${isLogin}">
                     <span class="userinfo">
                         <fmt:message key="LOGIN.MESSAGE">
-                            <fmt:param>${sessionScope.users.userNm}</fmt:param>
-                            <fmt:param>${sessionScope.users.userId}</fmt:param>
+                            <fmt:param>${userInfo.userNm}</fmt:param>
+                            <fmt:param>${userInfo.userId}</fmt:param>
                         </fmt:message>
                     </span>
                     <a href="${workListUrl}">
