@@ -57,4 +57,8 @@
         </trim>
         ORDER BY regDt
     </select>
+    <select id="exists" parameterType="models.works.Work" resultType="int">
+        SELECT COUNT(*) FORM WorkList WHERE workNo=#{workNo}
+    </select>
+
 </mapper>

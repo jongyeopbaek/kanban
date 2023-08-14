@@ -1,7 +1,7 @@
 package models.works;
 
-import Vaildators.RequiredValidator;
-import Vaildators.Validator;
+import validators.RequiredValidator;
+import validators.Validator;
 
 public class WorkSaveValidator implements Validator<Work>, RequiredValidator {
     @Override

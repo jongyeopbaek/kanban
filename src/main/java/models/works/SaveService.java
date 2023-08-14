@@ -1,6 +1,6 @@
 package models.works;
 
-import Vaildators.Validator;
+import validators.Validator;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class SaveService {
@@ -37,9 +37,9 @@ public class SaveService {
         String workNo = req.getParameter("workNo");
         if (workNo != null && !workNo.isBlank()){
             work.setWorkNo(Long.parseLong(workNo));
-
-            save(work);
         }
+
+        save(work);
     }
 
 }

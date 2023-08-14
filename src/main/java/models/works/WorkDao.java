@@ -21,7 +21,7 @@ public class WorkDao {
         if (workNo > 0L){ //수정
             affectedRows = sqlSession.update("WorkListMapper.edit", work);
         }else { // 추가
-            affectedRows = sqlSession.insert("WorkListMapper.edit", work);
+            affectedRows = sqlSession.insert("WorkListMapper.add", work);
         }
 
         sqlSession.commit();
@@ -71,5 +71,14 @@ public class WorkDao {
         List<Work> items = sqlSession.selectList("WorkListMapper.list", work);
 
         return items;
+    }
+
+    public boolean exists(long workNo){
+        SqlSession sqlSession = DBConnection.getSession();
+        Work params = new Work();
+        params.setWorkNo(workNo);
+        int cnt = sqlSession.selectOne("WorkListMapper.exists", params);
+
+        return cnt > 0;
     }
 }
