@@ -7,10 +7,11 @@
 <c:url var="deleteUrl" value="/works/delete/${work.workNo}" />
 
 <layout:main title="작업 보기">
-
-
-<section class="work_view layout_width">
-<h1>작업 상세보기</h1>
+<section class="work_view layout_width contents">
+    <h1>작업 상세 내용</h1>
+    <div class="user_nm">
+        작업자 : ${work.userNm}
+    </div>
     <div class="subject">
         <span class="status">${work.status.status}</span>
         ${work.subject}
